@@ -168,12 +168,35 @@
         font-size: 0.85rem;
       }
 
+      .form-toggle-button {
+        width: 100%;
+        padding: 16px;
+        border-radius: 12px;
+        border: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        background: linear-gradient(120deg, #2a7de1, #1e4fb5);
+        color: white;
+        cursor: pointer;
+        margin-bottom: 20px;
+        transition: background 0.3s;
+      }
+
+      .form-toggle-button:hover {
+        background: linear-gradient(120deg, #256cd2, #1a43a0);
+      }
+
       form {
         background: white;
         color: #1e2c3f;
         border-radius: 24px;
         padding: 30px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        display: none;
+      }
+
+      form.show {
+        display: block;
       }
 
       label {
@@ -370,6 +393,10 @@
         </div>
       </section>
 
+      <button type="button" class="form-toggle-button" id="showFormButton">
+        לאישור הגעה לחץ כאן
+      </button>
+
       <form id="honorEventForm">
         <label>מאשרים הגעה</label>
         <select name="מאשרים הגעה" required>
@@ -381,6 +408,9 @@
 
         <label>שם פרטי ומשפחה</label>
         <input type="text" name="שם פרטי ומשפחה" required>
+
+        <label>מספר טלפון</label>
+        <input type="tel" name="מספר טלפון" required>
 
         <label>מספר אנשים</label>
         <select name="מספר אנשים" id="peopleCountSelect" required>
@@ -395,16 +425,25 @@
           <textarea name="פרטי אנשים נוספים" placeholder="לדוגמה: 4 אנשים – רותם, דניאל, רועי, אלינור"></textarea>
         </div>
 
-        <label>צריכים הסעה?</label>
-        <select name="צריכים הסעה" id="needRideSelect" required>
+        <label>צריכים הסעה מתל השומר?</label>
+        <select name="צריכים הסעה מתל השומר" id="needRideSelect" required>
           <option value="">בחרו אפשרות</option>
           <option value="לא">לא</option>
           <option value="כן">כן</option>
         </select>
 
-        <div id="pickupDetails" class="extra-field">
-          <label>מאיפה תרצו שנאסוף אתכם?</label>
-          <input type="text" name="מאיפה להסיע" placeholder="כתובת / ישוב / נקודת מפגש">
+        <div id="accessibilityDetails" class="extra-field">
+          <label>נגישות</label>
+          <select name="נגישות" id="accessibilitySelect">
+            <option value="">בחרו אפשרות</option>
+            <option value="כסא גלגלים">כסא גלגלים</option>
+            <option value="קביים">קביים</option>
+            <option value="מתהלך">מתהלך</option>
+          </select>
+          
+          <div style="margin-top: 10px; padding: 12px; background-color: #f0f8ff; border-radius: 8px; color: #1e2c3f; font-size: 0.95rem;">
+            ההסעה מתל השומר יוצאת בשעה 17:00
+          </div>
         </div>
 
         <label>הגעה עצמאית</label>
@@ -437,10 +476,18 @@
       const peopleCountSelect = document.getElementById('peopleCountSelect');
       const peopleDetails = document.getElementById('peopleDetails');
       const needRideSelect = document.getElementById('needRideSelect');
-      const pickupDetails = document.getElementById('pickupDetails');
+      const accessibilityDetails = document.getElementById('accessibilityDetails');
+      const accessibilitySelect = document.getElementById('accessibilitySelect');
       const thankYouScreen = document.getElementById('thankYouScreen');
+      const showFormButton = document.getElementById('showFormButton');
 
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyW01gYSHtRMXRyS3i0KI_PGtBZ2mK38snYf7UggZh9JU9QJNgxhTyTkUjUyMU76XeR/exec';
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzOin7u-LpzHOGCHVkI-qQRQPPSysgqshUfDLjjIUeXTn7iPvJR99kaOAuMcK1MwiR/exec';
+
+      showFormButton.addEventListener('click', () => {
+        form.classList.add('show');
+        showFormButton.style.display = 'none';
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
 
       peopleCountSelect.addEventListener('change', () => {
         const showExtra = peopleCountSelect.value === 'אחר';
@@ -452,12 +499,11 @@
 
       needRideSelect.addEventListener('change', () => {
         const needsRide = needRideSelect.value === 'כן';
-        pickupDetails.classList.toggle('active', needsRide);
-        const input = pickupDetails.querySelector('input');
+        accessibilityDetails.classList.toggle('active', needsRide);
         if (!needsRide) {
-          input.value = '';
+          accessibilitySelect.value = '';
         }
-        input.required = needsRide;
+        accessibilitySelect.required = needsRide;
       });
 
       form.addEventListener('submit', (event) => {
@@ -473,7 +519,7 @@
           .then(() => {
             form.reset();
             peopleDetails.classList.remove('active');
-            pickupDetails.classList.remove('active');
+            accessibilityDetails.classList.remove('active');
             loadingPopup.style.display = 'none';
             successMessage.style.display = 'block';
             thankYouScreen.classList.add('active');
