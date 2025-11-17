@@ -6,7 +6,7 @@
     <title>כנס הזמנת כבוד - סביונים</title>
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://img.freepik.com/premium-photo/colorful-confetti-celebrations-creating-joyful-atmosphere-evening-event-generative-ai_698249-25339.jpg">
-    <meta property="og:title" content="כנס הזמנת כבוד - סביונים">
+    <meta property="og:title" content="הזמנת כבוד - סביונים">
     <meta property="og:description"
       content="מצטרפים לערב הוקרה מרגש ללוחמי ולוחמות צה״ל, חנוכת אמבולנס חדש וזמן איכות עם המשפחה הגדולה של סביונים.">
     <meta property="og:image"
@@ -15,7 +15,7 @@
     <meta property="og:image:height" content="1920">
     <meta property="og:image:type" content="image/jpeg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="כנס הזמנת כבוד - סביונים">
+    <meta name="twitter:title" content="הזמנת כבוד - סביונים">
     <meta name="twitter:description"
       content="ערב הוקרה עם חנוכת אמבולנס חדש, בר מפנק ומוזיקה טובה. מחכים לכם!">
     <meta name="twitter:image"
@@ -145,13 +145,48 @@
       }
 
       .highlight {
-        background: linear-gradient(90deg, #fbd770, #f7a73b);
+        background: linear-gradient(135deg, #fbd770 0%, #f7a73b 50%, #ffd369 100%);
         color: #122341;
-        border-radius: 16px;
-        padding: 18px;
+        border-radius: 20px;
+        padding: 28px 24px;
         text-align: center;
-        font-weight: bold;
+        margin-bottom: 25px;
+        box-shadow: 0 8px 24px rgba(251, 215, 112, 0.4), 
+                    0 4px 12px rgba(0, 0, 0, 0.15);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .highlight::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
+      }
+
+      .highlight-title {
+        font-size: 1.4rem;
         margin-bottom: 20px;
+        font-weight: 800;
+        line-height: 1.4;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        letter-spacing: 0.5px;
+      }
+
+      .highlight-list {
+        text-align: right;
+        line-height: 2;
+        font-size: 1.05rem;
+        font-weight: 600;
+        padding: 0 10px;
+      }
+
+      .highlight-list br {
+        line-height: 1.6;
       }
 
       form {
@@ -291,6 +326,21 @@
         .logo-container img {
           max-height: 60px;
         }
+
+        .highlight {
+          padding: 22px 18px;
+          border-radius: 16px;
+        }
+
+        .highlight-title {
+          font-size: 1.2rem;
+          margin-bottom: 16px;
+        }
+
+        .highlight-list {
+          font-size: 0.95rem;
+          line-height: 1.8;
+        }
       }
     </style>
   </head>
@@ -306,8 +356,16 @@
       </div>
       <section class="hero">
         <div class="highlight">
-          לוחמים ולוחמות, עמותת סביונים מזמינה אתכם לערב בשרים על האש, בר קוקטיילים,
-          די-ג׳יי, מוזיקה טובה ואווירה משפחתית מחבקת.
+          <div class="highlight-title">
+            לוחמים ולוחמות,<br>הערב הזה הוא בשבילכם!
+          </div>
+          <div class="highlight-list">
+            • בשרים איכותיים על האש<br>
+            עם השף meat uzi<br>
+            • בר קוקטיילים "חיות בר"<br>
+            • די-ג׳יי ומוזיקה טובה<br>
+            • אווירה משפחתית, מחבקת ואוהבת
+          </div>
         </div>
         <div class="details">
           <div class="detail-card">
