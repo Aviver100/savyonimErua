@@ -48,6 +48,20 @@
         margin: auto;
       }
 
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 25px;
+      }
+
+      .logo-container img {
+        max-width: 100%;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
+      }
+
       .hero {
         background: rgba(6, 19, 42, 0.8);
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -88,6 +102,11 @@
         display: block;
         font-size: 0.95rem;
         opacity: 0.85;
+        margin-bottom: 8px;
+      }
+
+      .detail-card span:last-of-type {
+        margin-bottom: 0;
       }
 
       .detail-card strong {
@@ -95,6 +114,34 @@
         margin-top: 6px;
         font-size: 1.05rem;
         color: #ffd369;
+      }
+
+      .detail-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12px;
+        gap: 12px;
+      }
+
+      .detail-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .detail-label {
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.95rem;
+        opacity: 1 !important;
+        margin-bottom: 0 !important;
+      }
+
+      .detail-value {
+        color: #ffd369 !important;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-top: 0 !important;
+        display: inline !important;
       }
 
       .highlight {
@@ -236,6 +283,14 @@
         body {
           padding: 18px 12px;
         }
+
+        .logo-container {
+          margin-bottom: 20px;
+        }
+
+        .logo-container img {
+          max-height: 60px;
+        }
       }
     </style>
   </head>
@@ -246,27 +301,34 @@
       class="share-preview"
       aria-hidden="true">
     <div class="page">
+      <div class="logo-container">
+        <img src="https://savyonim.org/wp-content/uploads/2023/10/logo-trans-300-380.png.webp" alt="לוגו סביונים">
+      </div>
       <section class="hero">
-        <h1>הזמנת כבוד</h1>
-        <p>
-          ערב ייחודי ומרגש ללוחמי ולוחמות צה״ל, לטקס חנוכת אמבולנס חדש שנתרם
-          לזכרו של רס״ל (מיל׳) אריאל לובלינג ז״ל, בהובלת החזן הראשי לצה״ל שי
-          אברמסון.
-        </p>
+        <div class="highlight">
+          לוחמים ולוחמות, עמותת סביונים מזמינה אתכם לערב בשרים על האש, בר קוקטיילים,
+          די-ג׳יי, מוזיקה טובה ואווירה משפחתית מחבקת.
+        </div>
         <div class="details">
           <div class="detail-card">
-            <span>מתי?</span>
-            <strong>יום ראשון · 23.11.2025 · 17:45</strong>
+            <div class="detail-row">
+              <span class="detail-label">תאריך:</span>
+              <strong class="detail-value">23.11.2025</strong>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">יום:</span>
+              <strong class="detail-value">ראשון</strong>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">שעה:</span>
+              <strong class="detail-value">17:45</strong>
+            </div>
           </div>
           
           <div class="detail-card">
             <span>איפה?</span>
-            <strong>בית משפחת סער, דרך אפק 14, כפר סירקין</strong>
+            <strong>הבנים 14 כפר סירקין - בית משפחת סער</strong>
           </div>
-        </div>
-        <div class="highlight">
-          לוחמים ולוחמות, הערב הזה הוא בשבילכם! בשרים על האש, בר קוקטיילים,
-          די-ג׳יי, מוזיקה טובה ואווירה משפחתית מחבקת.
         </div>
       </section>
 
